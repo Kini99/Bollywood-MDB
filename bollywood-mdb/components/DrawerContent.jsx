@@ -2,6 +2,38 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 const DrawerContent = ({ closeDrawer }) => {
+
+    const options = [
+        {
+            id: 1,
+            name: "News & Adds"
+        },
+        {
+            id: 2,
+            name: "Movies"
+        },
+        {
+            id: 3,
+            name: "Videos"
+        },
+        {
+            id: 4,
+            name: "Photos"
+        },
+        {
+            id: 5,
+            name: "Reviews"
+        },
+        {
+            id: 6,
+            name: "Box Office Reports"
+        },
+        {
+            id: 7,
+            name: "Web Series"
+        },
+    ]
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -10,55 +42,17 @@ const DrawerContent = ({ closeDrawer }) => {
                 </TouchableOpacity>
             </View>
             <Image source={require('../assets/img.png')} style={styles.img} />
-            <TouchableOpacity style={styles.drawerItem}>
-            <View style={styles.textContainer}>
-                    <Image source={require('../assets/bullet.png')} style={styles.bulletIcon} />
-                    <Text style={styles.text}>News & Adds</Text>
-                    <Image source={require('../assets/arrow.png')} style={styles.arrowIcon} />
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.drawerItem}>
-            <View style={styles.textContainer}>
-                    <Image source={require('../assets/bullet.png')} style={styles.bulletIcon} />
-                    <Text style={styles.text}>Movies</Text>
-                    <Image source={require('../assets/arrow.png')} style={styles.arrowIcon} />
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.drawerItem}>
-            <View style={styles.textContainer}>
-                    <Image source={require('../assets/bullet.png')} style={styles.bulletIcon} />
-                    <Text style={styles.text}>Videos</Text>
-                    <Image source={require('../assets/arrow.png')} style={styles.arrowIcon} />
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.drawerItem}>
-            <View style={styles.textContainer}>
-                    <Image source={require('../assets/bullet.png')} style={styles.bulletIcon} />
-                    <Text style={styles.text}>Photos</Text>
-                    <Image source={require('../assets/arrow.png')} style={styles.arrowIcon} />
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.drawerItem}>
-            <View style={styles.textContainer}>
-                    <Image source={require('../assets/bullet.png')} style={styles.bulletIcon} />
-                    <Text style={styles.text}>Reviews</Text>
-                    <Image source={require('../assets/arrow.png')} style={styles.arrowIcon} />
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.drawerItem}>
-            <View style={styles.textContainer}>
-                    <Image source={require('../assets/bullet.png')} style={styles.bulletIcon} />
-                    <Text style={styles.text}>Box Office Report</Text>
-                    <Image source={require('../assets/arrow.png')} style={styles.arrowIcon} />
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.drawerItem}>
-            <View style={styles.textContainer}>
-                    <Image source={require('../assets/bullet.png')} style={styles.bulletIcon} />
-                    <Text style={styles.text}>Web Series</Text>
-                    <Image source={require('../assets/arrow.png')} style={styles.arrowIcon} />
-                </View>
-            </TouchableOpacity>
+            {
+                options.map((item) => (
+                    <TouchableOpacity style={styles.drawerItem} key={item.id}>
+                        <View style={styles.textContainer}>
+                            <Image source={require('../assets/bullet.png')} style={styles.bulletIcon} />
+                            <Text style={styles.text}>{item.name}</Text>
+                            <Image source={require('../assets/arrow.png')} style={styles.arrowIcon} />
+                        </View>
+                    </TouchableOpacity>
+                ))
+            }
             <View style={styles.bottomBox}>
                 <View style={styles.bottomBoxRow}>
                     <TouchableOpacity style={styles.bottomBoxIcon}>
@@ -106,8 +100,8 @@ const styles = StyleSheet.create({
     text: {
         color: 'white',
         fontSize: 16,
-        textAlign: 'center',
-        padding:10
+        textAlign: 'left',
+        padding: 10
     },
     img: {
         width: 250,
@@ -144,19 +138,21 @@ const styles = StyleSheet.create({
     bottomBoxText: {
         color: 'white',
         fontSize: 16,
-        marginTop:15,
-        paddingRight:10,
-        paddingLeft:10
+        marginTop: 15,
+        paddingRight: 10,
+        paddingLeft: 10,
+        marginLeft:-10,
     },
     whiteBorderRight: {
         borderRightWidth: 1,
         borderColor: 'white',
-      },
-      textContainer: {
+        marginRight:10
+    },
+    textContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        width:"100%",
-        justifyContent:"space-between"
+        width: "100%",
+        justifyContent: "space-between"
     },
     bulletIcon: {
         width: 10,

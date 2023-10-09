@@ -6,16 +6,18 @@ import hamburger from '../assets/hamburger.png';
 
 const screenWidth = Dimensions.get('window').width;
 
-const DrawerComponent = () => {
+const DrawerComponent = ({ toggleModal }) => {
   const [isDrawerVisible, setDrawerVisible] = useState(false);
   const slideInRight = new Animated.Value(0);
 
   const toggleDrawer = () => {
     setDrawerVisible(!isDrawerVisible);
+    toggleModal();
   };
 
   const closeDrawer = () => {
     setDrawerVisible(false);
+    toggleModal();
   };
 
   useEffect(() => {
